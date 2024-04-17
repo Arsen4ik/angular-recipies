@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { RecipesService } from './services/recipes.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'myapp';
+  title = 'recipes';
+  recipes = inject(RecipesService)
+  constructor() {
+    this.recipes.fetchRecipes()
+  }
 }
